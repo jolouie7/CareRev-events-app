@@ -19,7 +19,8 @@ class EventController < ApplicationController
 # }
 
 # What the curl request looks like:
-# curl -X POST --header 'Content-Type: application/json' --data '{"event" : {"name" : "test button", "event_type" : "click", "at" : "2020-06-12T00:00:01", "button_color" : "red" }}' 
+# curl -X POST --header 'Content-Type: application/json' --data '{"event" : {"name" : "test button", "event_type" : "click", "at" : "2020-06-12T00:00:01", "button_color" : "red" }}' http://localhost:3333/events
+# curl -X GET http://localhost:3333/events/stats/
 
   #
   # POST /events - create a new event
@@ -32,7 +33,9 @@ class EventController < ApplicationController
     name = params[:event][:name]
     event_type = params[:event][:event_type]
 
-    if name == nil
+    if name == nil && event_type == nil
+      render json: {error: "name and event_type are required", status: 422}
+    elsif name == nil
       puts "name is nil"
       render json: {error: "name is required", status: 422}
     elsif event_type == nil
