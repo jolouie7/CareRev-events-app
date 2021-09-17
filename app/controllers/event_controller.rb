@@ -47,10 +47,6 @@ class EventController < ApplicationController
     end
   end
 
-# Add another endpoint for todays stats. This endpoint takes all the events received today, groups them
-# by event_type and returns the count for each. The response should be JSON (e.g.: { "todays_stats" :
-# [{"click" : 34}, {"view": 54}]} )
-
   #
   # GET /events/stats - get all of todays events and return the count for each event_type
   #
