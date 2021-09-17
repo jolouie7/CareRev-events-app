@@ -4,24 +4,6 @@ class EventController < ApplicationController
     render json: {events: @events}
   end
 
-# Additionally the API should
-# require that there is a key named “name” and a key named “event_type” in each blob of data sent. If those
-# keys aren’t present the api returns HTTP status 422 and an error message indicating the missing key(s).
-
-# Respond with HTTP success when the event is successfully created and stored in the database.
-
-# Example of incoming data:
-# {
-# 	"event": {
-# 	"name": "test button",
-# 	"event_type": "click"
-# 	}
-# }
-
-# What the curl request looks like:
-# curl -X POST --header 'Content-Type: application/json' --data '{"event" : {"name" : "test button", "event_type" : "click", "at" : "2020-06-12T00:00:01", "button_color" : "red" }}' http://localhost:3333/events
-# curl -X GET http://localhost:3333/events/stats/
-
   #
   # POST /events - create a new event
   # params:
